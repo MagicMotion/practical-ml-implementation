@@ -31,4 +31,13 @@ run = Run.get_context()
 # Number of classes - do not change unless the data changes
 num_classes = 10
 
-#
+# sizes of batch and # of epochs of data
+batch_size = 128
+epochs = 24
+
+# input image dimensions
+img_rows, img_cols = 28, 28
+
+# the data, shuffled and split between train and test sets
+(x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+print('x_train shape
