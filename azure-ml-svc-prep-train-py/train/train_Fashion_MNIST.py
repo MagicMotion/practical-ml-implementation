@@ -58,4 +58,12 @@ x_train = x_train.astype('float32')
 x_test = x_test.astype('float32')
 x_train /= 255
 x_test /= 255
-print('x_train shape (after reshape):
+print('x_train shape (after reshape):', x_train.shape)
+print('x_test shape (after reshape):', x_test.shape)
+
+img_index = 1
+plt.imsave('fashion.png', 1-x_train[img_index][:, :, 0], cmap='gray')
+run.log_image('Fashion Sample', path='fashion.png')
+
+print("Before:\n{}".format(y_train[:4]))
+# convert class vectors to binary class m
