@@ -89,4 +89,11 @@ model.add(Dense(num_classes, activation='softmax'))
 # Take a look at the model summary
 model.summary()
 
-#   define compile to minimize categorical
+#   define compile to minimize categorical loss, use ada delta optimized, and optimize to maximizing accuracy
+model.compile(loss=keras.losses.categorical_crossentropy,
+              optimizer=keras.optimizers.Adam(),
+              metrics=['accuracy'])
+
+#   Define callbacks
+my_callbacks = [
+    EarlyStopping(monitor='val_accu
