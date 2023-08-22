@@ -96,4 +96,10 @@ model.compile(loss=keras.losses.categorical_crossentropy,
 
 #   Define callbacks
 my_callbacks = [
-    EarlyStopping(monitor='val_accu
+    EarlyStopping(monitor='val_accuracy', patience=5, mode='max'), 
+    ModelCheckpoint('./outputs/checkpoint.h5', verbose=1)
+]
+
+#   Train the model and test/validate the mode with the test data after each cycle (epoch) through the training data
+#   Return history of loss and accuracy for each epoch
+hist =
