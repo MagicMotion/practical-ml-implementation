@@ -115,4 +115,10 @@ run.log_list('Validation Accuracy', hist.history['val_accuracy'])
 #   Evaluate the model with the test data to get the scores on "real" data.
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
-print('Test 
+print('Test accuracy:', score[1])
+run.log('loss', score[0])
+run.log('accuracy', score[1])
+
+#   Plot data to see relationships in training and validation data
+epoch_list = list(range(1, len(hist.history['accuracy']) + 1))  # values for x axis [1, 2, ..., # of epochs]
+plt.plot(epoch_
