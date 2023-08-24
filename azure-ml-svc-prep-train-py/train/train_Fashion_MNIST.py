@@ -109,4 +109,10 @@ hist = model.fit(x_train, y_train,
             callbacks=my_callbacks,
             validation_data=(x_test, y_test))
 run.log_list('Training Loss', hist.history['loss'])
-run.log_list('Training Ac
+run.log_list('Training Accuracy', hist.history['accuracy'])
+run.log_list('Validation Accuracy', hist.history['val_accuracy'])
+
+#   Evaluate the model with the test data to get the scores on "real" data.
+score = model.evaluate(x_test, y_test, verbose=0)
+print('Test loss:', score[0])
+print('Test 
