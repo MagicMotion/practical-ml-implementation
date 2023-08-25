@@ -121,4 +121,9 @@ run.log('accuracy', score[1])
 
 #   Plot data to see relationships in training and validation data
 epoch_list = list(range(1, len(hist.history['accuracy']) + 1))  # values for x axis [1, 2, ..., # of epochs]
-plt.plot(epoch_
+plt.plot(epoch_list, hist.history['accuracy'], epoch_list, hist.history['val_accuracy'])
+plt.legend(('Training Accuracy', 'Validation Accuracy'))
+run.log_image(name='Accuracy', plot=plt)
+
+keras_path = os.path.join(outputs_folder, "keras")
+os.makedirs(keras_path, exist_ok=T
