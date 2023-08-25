@@ -126,4 +126,11 @@ plt.legend(('Training Accuracy', 'Validation Accuracy'))
 run.log_image(name='Accuracy', plot=plt)
 
 keras_path = os.path.join(outputs_folder, "keras")
-os.makedirs(keras_path, exist_ok=T
+os.makedirs(keras_path, exist_ok=True)
+
+print("Exporting Keras models to", keras_path)
+with open(os.path.join(keras_path, "model.json"), 'w') as f:
+    f.write(model.to_json())
+model.save_weights(os.path.join(keras_path, 'model.h5'))
+
+model.save(os.path.join(keras_path, 'full_model.h5'))
