@@ -13,4 +13,11 @@ summary(mtcars)
 # Create glm model with `mtcars` dataset
 carsModel <- glm(formula = am ~ hp + wt, data = mtcars, family = binomial)
 
-# Produce a predicti
+# Produce a prediction function that can use the model
+manualTransmission <- function(hp, wt) {
+  newdata <- data.frame(hp = hp, wt = wt)
+  predict(carsModel, newdata, type = "response")
+}
+
+# test function locally by printing results
+print(manualTransmission(120, 2.8)) #
