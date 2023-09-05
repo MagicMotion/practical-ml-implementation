@@ -15,4 +15,20 @@ declare resourceGroupLocation=""
 declare aciDnsNameLabel=""
 declare acrName=""
 
-# Initialize parameters sp
+# Initialize parameters specified from command line
+while getopts ":i:g:n:l:r:d:" arg; do
+	case "${arg}" in
+		i)
+			subscriptionId=${OPTARG}
+			;;
+		g)
+			resourceGroupName=${OPTARG}
+			;;
+		n)
+			deploymentName=${OPTARG}
+			;;
+		l)
+			resourceGroupLocation=${OPTARG}
+			;;
+		r)
+	
