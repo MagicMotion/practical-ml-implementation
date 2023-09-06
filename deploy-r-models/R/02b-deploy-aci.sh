@@ -31,4 +31,15 @@ while getopts ":i:g:n:l:r:d:" arg; do
 			resourceGroupLocation=${OPTARG}
 			;;
 		r)
-	
+			acrName=${OPTARG}
+			;;
+		d)
+			aciDnsNameLabel=${OPTARG}
+			;;
+		esac
+done
+shift $((OPTIND-1))
+
+#Prompt for parameters is some required parameters are missing
+if [[ -z "$subscriptionId" ]]; then
+	echo "Your subscription ID can be looked up with the CLI 
