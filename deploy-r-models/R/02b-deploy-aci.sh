@@ -57,4 +57,13 @@ if [[ -z "$resourceGroupName" ]]; then
 fi
 
 if [[ -z "$deploymentName" ]]; then
-	echo "Enter a name for this deploy
+	echo "Enter a name for this deployment:"
+	read deploymentName
+fi
+
+if [[ -z "$resourceGroupLocation" ]]; then
+	echo "If creating a *new* resource group, you need to set a location "
+	echo "You can lookup locations with the CLI using: az account list-locations "
+	
+	echo "Enter resource group location:"
+	re
