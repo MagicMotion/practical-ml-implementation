@@ -79,4 +79,18 @@ if [[ -z "$aciDnsNameLabel" ]]; then
 	read aciDnsNameLabel
 fi
 
-#lo
+#login to azure using your credentials
+az account show 1> /dev/null
+
+if [ $? != 0 ];
+then
+	az login
+fi
+
+#set the default subscription id
+az account set --subscription $subscriptionId
+
+set +e
+
+#Check for existing RG
+az group show --name $resourceGroupName 1>
