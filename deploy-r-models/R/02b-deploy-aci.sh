@@ -66,4 +66,17 @@ if [[ -z "$resourceGroupLocation" ]]; then
 	echo "You can lookup locations with the CLI using: az account list-locations "
 	
 	echo "Enter resource group location:"
-	re
+	read resourceGroupLocation
+fi
+
+if [[ -z "$acrName" ]]; then
+	echo "Enter a name for the azure container registry:"
+	read acrName
+fi
+
+if [[ -z "$aciDnsNameLabel" ]]; then
+	echo "Enter a name for the azure container instance dns entry:"
+	read aciDnsNameLabel
+fi
+
+#lo
