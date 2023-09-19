@@ -115,3 +115,14 @@ echo "Building Docker Image..."
 (
 	docker build -t $acrName.azurecr.io/carssvc .
 )
+
+echo "Uploading Docker Image..."
+(
+	docker push $acrName.azurecr.io/carssvc
+)
+
+#Start deployment
+echo "Starting deployment..."
+(
+	acrPassword=$(az acr credential show -g "$resourceGroupName" -n "$acrName" | jq -r .passwords[0].value)
+	az container create -g "$resourceGro
