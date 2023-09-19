@@ -102,3 +102,16 @@ if [ $? != 0 ]; then
 		set -x
 		az group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
 	)
+	else
+	echo "Using existing resource group..."
+fi
+
+echo "Deploying Container Registry..."
+(
+	az acr create -g "$resourceGroupName" -n "$acrName" --sku basic --admin-enabled true 1> /dev/null
+)
+
+echo "Building Docker Image..."
+(
+	docker build -t $acrName.azurecr.io/carssvc .
+)
