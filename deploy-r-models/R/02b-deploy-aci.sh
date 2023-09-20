@@ -130,4 +130,5 @@ echo "Starting deployment..."
 
 if [ $?  == 0 ];
  then
-	echo "Azure Container Instance has been successfully d
+	echo "Azure Container Instance has been successfully deployed"
+fi
