@@ -125,4 +125,9 @@ echo "Uploading Docker Image..."
 echo "Starting deployment..."
 (
 	acrPassword=$(az acr credential show -g "$resourceGroupName" -n "$acrName" | jq -r .passwords[0].value)
-	az container create -g "$resourceGro
+	az container create -g "$resourceGroupName" -n cars-svc-aci --image "$acrName.azurecr.io/carssvc:latest" --ports 8000 --dns-name-label "$aciDnsNameLabel" --registry-username "$acrName" --registry-password "$acrPassword"
+)
+
+if [ $?  == 0 ];
+ then
+	echo "Azure Container Instance has been successfully d
