@@ -11,4 +11,16 @@ usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploym
 declare subscriptionId=""
 declare resourceGroupName=""
 declare deploymentName="msftmlsvr-`date '+%Y-%m-%d-%H-%M-%S'`"
-declare r
+declare resourceGroupLocation=""
+declare vmPrefix=""
+declare username="" 
+declare password=""
+
+# Initialize parameters specified from command line
+while getopts ":i:g:n:l:v:u:p:" arg; do
+	case "${arg}" in
+		i)
+			subscriptionId=${OPTARG}
+			;;
+		g)
+			r
