@@ -23,4 +23,23 @@ while getopts ":i:g:n:l:v:u:p:" arg; do
 			subscriptionId=${OPTARG}
 			;;
 		g)
-			r
+			resourceGroupName=${OPTARG}
+			;;
+		n)
+			deploymentName=${OPTARG}
+			;;
+		l)
+			resourceGroupLocation=${OPTARG}
+			;;
+		v)
+			vmPrefix=${OPTARG}
+			;;
+		u)
+			username=${OPTARG}
+			;;
+		p)
+			password=${OPTARG}
+			;;
+		esac
+done
+shift
