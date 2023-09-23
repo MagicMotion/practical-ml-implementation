@@ -42,4 +42,9 @@ while getopts ":i:g:n:l:v:u:p:" arg; do
 			;;
 		esac
 done
-shift
+shift $((OPTIND-1))
+
+# Requirements check: jq
+command -v jq >/dev/null 2>&1 || { echo >&2 "jq is required by this script but it's not installed. Please check https://stedolan.github.io/jq/download/ for details how to install jq."; exit 1; }
+
+#Prompt fo
