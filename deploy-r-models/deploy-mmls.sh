@@ -47,4 +47,9 @@ shift $((OPTIND-1))
 # Requirements check: jq
 command -v jq >/dev/null 2>&1 || { echo >&2 "jq is required by this script but it's not installed. Please check https://stedolan.github.io/jq/download/ for details how to install jq."; exit 1; }
 
-#Prompt fo
+#Prompt for parameters is some required parameters are missing
+if [[ -z "$subscriptionId" ]]; then
+	echo "Your subscription ID can be looked up with the CLI using: az account show --out json "
+	echo "Enter your subscription ID:"
+	read subscriptionId
+	[[ "${subs
