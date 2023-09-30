@@ -77,4 +77,16 @@ if [[ -z "$resourceGroupLocation" ]]; then
 fi
 
 if [[ -z "$vmPrefix" ]]; then
-	echo
+	echo "Enter a name for the virtual machine:"
+	read vmPrefix
+fi
+
+if [[ -z "$username" ]]; then
+	echo "Enter a username for the vm admin:"
+	read username
+fi
+
+if [[ -z "$password" ]]; then
+	while : ; do
+		echo -n "Enter a password for the vm admin:"
+		read -s passwo
