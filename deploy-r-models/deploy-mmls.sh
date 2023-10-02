@@ -102,4 +102,18 @@ if [[ -z "$password" ]]; then
 	done
 fi
 
-if [ -z "$subscriptionId"
+if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentName" ]; then
+	echo "Either one of subscriptionId, resourceGroupName, deploymentName is empty"
+	usage
+fi
+
+#login to azure using your credentials
+az account show 1> /dev/null
+
+if [ $? != 0 ];
+then
+	az login
+fi
+
+#set the default subscription id
+az account s
