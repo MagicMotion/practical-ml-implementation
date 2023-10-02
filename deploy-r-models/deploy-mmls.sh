@@ -116,4 +116,13 @@ then
 fi
 
 #set the default subscription id
-az account s
+az account set --subscription $subscriptionId
+
+set +e
+
+#Check for existing RG
+az group show --name $resourceGroupName 1> /dev/null
+
+if [ $? != 0 ]; then
+	echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
+	set -e
