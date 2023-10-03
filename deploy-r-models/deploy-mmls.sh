@@ -140,4 +140,12 @@ echo "Starting deployment..."
 echo "Virtual Network..."
 (
 	set -x
-	az network vnet create 
+	az network vnet create -g "$resourceGroupName" -n "$vmPrefix-vnet" --address-prefix 10.0.0.0/16 \
+        --subnet-name default --subnet-prefix 10.0.0.0/24 \
+		| jq -r .newVNet.provisioningState
+)
+
+echo "Network Security Group with 3 Rules..."
+(
+	set -x
+	az network nsg create -g "$resourc
