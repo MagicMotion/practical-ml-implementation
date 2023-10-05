@@ -148,4 +148,8 @@ echo "Virtual Network..."
 echo "Network Security Group with 3 Rules..."
 (
 	set -x
-	az network nsg create -g "$resourc
+	az network nsg create -g "$resourceGroupName" -n "$vmPrefix-nsg" | jq -r .NewNSG.provisioningState
+
+	az network nsg rule create -g "$resourceGroupName" --nsg-name "$vmPrefix-nsg" -n "MLSvr_WebNode" \
+		--priority 1000 --access Allow --protocol Tcp --direction Inbound \
+		--destination-
