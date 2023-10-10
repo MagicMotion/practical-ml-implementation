@@ -157,4 +157,9 @@ echo "Network Security Group with 3 Rules..."
 
 	az network nsg rule create -g "$resourceGroupName" --nsg-name "$vmPrefix-nsg" -n "MLSvr_ComputeNode" \
 		--priority 1100 --access Allow --protocol Tcp --direction Inbound \
-		--destina
+		--destination-address-prefixes '*' --destination-port-ranges 12805 \
+		| jq -r .provisioningState
+
+	az network nsg rule create -g "$resourceGroupName" --nsg-name "$vmPrefix-nsg" -n "MLSvr_RServe" \
+		--priority 1200 --access Allow --protocol Tcp --direction Inbound \
+	
