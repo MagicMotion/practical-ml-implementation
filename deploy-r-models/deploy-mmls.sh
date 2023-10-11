@@ -170,4 +170,10 @@ echo "Public IP & NIC..."
 (
 	set -x
 	az network public-ip create -g "$resourceGroupName" -n "$vmPrefix-ip" --sku Basic \
-		| jq -r .publicIp.provisioningStat
+		| jq -r .publicIp.provisioningState
+	az network nic create -g "$resourceGroupName" -n "$vmPrefix-nic" --vnet-name "$vmPrefix-vnet" \
+		--subnet default --network-security-group "$vmPrefix-nsg" --public-ip-address "$vmPrefix-ip" \
+		| jq -r .NewNIC.provisioningState
+)
+
+echo "Virtual Mach
