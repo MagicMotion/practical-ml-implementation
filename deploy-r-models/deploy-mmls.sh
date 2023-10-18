@@ -181,4 +181,11 @@ echo "Virtual Machine..."
 	az vm create -g "$resourceGroupName" -n "$vmPrefix" \
 		--image Canonical:UbuntuServer:16.04-LTS:latest --size Standard_D2s_v3 \
         --authentication-type password --admin-username "$username" --admin-password $password \
-        --nics "$vmPrefix-nic" --os-d
+        --nics "$vmPrefix-nic" --os-disk-name "$vmPrefix-osdisk" --enable-agent "true"
+)
+
+echo "Microsoft Machine Learning Server..."
+(
+	az vm extension set -g "$resourceGroupName" -n "customScript" \
+		--vm-name "$vmPrefix" --publisher Microsoft.Azure.Extensions \
+		--protected-settings "{\"fileUri
