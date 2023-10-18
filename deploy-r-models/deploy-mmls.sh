@@ -188,4 +188,8 @@ echo "Microsoft Machine Learning Server..."
 (
 	az vm extension set -g "$resourceGroupName" -n "customScript" \
 		--vm-name "$vmPrefix" --publisher Microsoft.Azure.Extensions \
-		--protected-settings "{\"fileUri
+		--protected-settings "{\"fileUris\": [\"https://raw.githubusercontent.com/SaschaDittmann/machine-learning-in-practice/master/deploy-r-models/setup/install-mmls-ubuntu.sh\"],\"commandToExecute\": \"./install-mmls-ubuntu.sh -p '$password'\"}" \
+		| jq -r .provisioningState
+)
+
+if [ $?  == 
