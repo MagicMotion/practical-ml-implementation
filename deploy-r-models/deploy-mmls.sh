@@ -192,4 +192,7 @@ echo "Microsoft Machine Learning Server..."
 		| jq -r .provisioningState
 )
 
-if [ $?  == 
+if [ $?  == 0 ];
+ then
+	echo "Microsoft Machine Learning Server has been successfully deployed"
+fi
