@@ -28,4 +28,11 @@ if [[ -z "$password" ]]; then
 fi
 
 # Optionally, if your system does not have the https apt transport option
-apt-get install apt-transpor
+apt-get install apt-transport-https
+
+# Add the **azure-cli** repo to your apt sources list
+AZ_REPO=$(lsb_release -cs)
+
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+
+# Set the location of the package repo the 
