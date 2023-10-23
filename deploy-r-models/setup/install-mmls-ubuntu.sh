@@ -35,4 +35,9 @@ AZ_REPO=$(lsb_release -cs)
 
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 
-# Set the location of the package repo the 
+# Set the location of the package repo the "prod" directory containing the distribution.
+# This example specifies 16.04. Replace with 14.04 if you want that version
+wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+
+# Register the repo
+dpkg -i packages-m
